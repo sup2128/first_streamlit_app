@@ -19,8 +19,8 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # Display the table on the page.
 
 streamlit.dataframe(fruits_to_show)
-
-fruityvice_response=requests.get("https://www.fruityvice.com/api/fruit/"+"kiwi")
+fruit_choice=streamlit.text_input('which fruit you want?','kiwi')
+fruityvice_response=requests.get("https://www.fruityvice.com/api/fruit/"+fruit_choice)
 streamlit.header("FruityVice Advice")
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 streamlit.dataframe(fruityvice_normalized)
