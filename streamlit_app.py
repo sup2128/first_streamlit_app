@@ -17,6 +17,11 @@ def get_fruit_load_list():
     my_data_row = my_cur.fetchall()
     return my_data_row
 
+def add_fruit_to_list(fruit):
+  with my_cnx.cursor() as my_cur:
+    my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values ('" + fruit + "')" )
+  
+
 streamlit.header('Breakfast Menu')
 streamlit.text('🥣 Omega 3 & Blueberry Oatmeal')
 streamlit.text('🥗 Kale, Spinach & Rocket Smoothie')
@@ -50,8 +55,10 @@ if streamlit.button('Get Fruit Load List'):
   my_data_row = get_fruit_load_list()
 
   streamlit.text("Fruitload list contains")
+  fruit_choice=streamlit.text_input('which fruit you want?')
+  add_fruit_to_list(fruit_choice)
 
   streamlit.dataframe(my_data_row)
-#my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values ('streamlit')")
+
 
 
