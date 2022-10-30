@@ -21,6 +21,7 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 
 streamlit.dataframe(fruits_to_show)
 fruit_choice=streamlit.text_input('which fruit you want?','kiwi')
+fruit=streamlit.text_input('which fruit you want?','apple')
 fruityvice_response=requests.get("https://www.fruityvice.com/api/fruit/"+fruit_choice)
 streamlit.header("FruityVice Advice")
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
@@ -28,7 +29,7 @@ streamlit.dataframe(fruityvice_normalized)
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
-fruit=streamlit.text_input('which fruit you want?','kiwi')
+
 my_cur.execute("SELECT * from pc_rivery_db.public.fruit_load_list where fruit_name='apple'" )
 my_data_row = my_cur.fetchone()
 streamlit.text("Fruitload list contains")
