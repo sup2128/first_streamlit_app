@@ -35,8 +35,8 @@ try:
   else:
     fruityvice_normalized = get_fruityvice_data(fruit_choice)
     streamlit.dataframe(fruityvice_normalized)
-    
-
+finally:
+  streamlit.text('done')
 fruit=streamlit.text_input('which fruit you want?','apple')
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
