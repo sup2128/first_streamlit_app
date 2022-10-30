@@ -33,7 +33,7 @@ my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * from pc_rivery_db.public.fruit_load_list " )
 my_data_row = my_cur.fetchall()
 streamlit.text("Fruitload list contains")
-streamli.text(my_data_row)
+streamlit.text(my_data_row)
 #streamlit.dataframe(my_data_row.loc[fruit])
 
 
