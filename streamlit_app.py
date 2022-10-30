@@ -30,9 +30,9 @@ fruit=streamlit.text_input('which fruit you want?','apple')
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 
-my_cur.execute("SELECT * from pc_rivery_db.public.fruit_load_list where fruit_name='" + fruit + "'" )
+my_cur.execute("SELECT * from pc_rivery_db.public.fruit_load_list " )
 my_data_row = my_cur.fetchall()
 streamlit.text("Fruitload list contains")
-streamlit.dataframe(my_data_row)
+streamlit.dataframe(my_data_row[fruit])
 
 
