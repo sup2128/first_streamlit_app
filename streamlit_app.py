@@ -32,10 +32,10 @@ my_cur = my_cnx.cursor()
 
 my_cur.execute("SELECT * from pc_rivery_db.public.fruit_load_list " )
 my_data_row = my_cur.fetchall()
-df=pandas.DataFrame(my_data_row)
-print(df)
+
 streamlit.text("Fruitload list contains")
 
-#streamlit.dataframe(my_data_row.loc[fruit])
+df =streamlit.dataframe(my_data_row)
+print(df)
 
 
