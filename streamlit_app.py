@@ -2,6 +2,7 @@ import streamlit
 import pandas
 import requests
 import snowflake.connector
+from urllib.error import URLError
 streamlit.title('My Parents New Healthy Dinner')
 
 streamlit.header('Breakfast Menu')
@@ -35,7 +36,7 @@ my_data_row = my_cur.fetchall()
 
 streamlit.text("Fruitload list contains")
 
-df =streamlit.dataframe(my_data_row)
-print(df)
+streamlit.dataframe(my_data_row)
+my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values ('streamlit')")
 
 
